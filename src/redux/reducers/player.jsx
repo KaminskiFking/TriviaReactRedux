@@ -1,11 +1,9 @@
-// import { REQUEST_ADD_SCORE, REQUEST_SHOW_NEXT } from '../actions/game';
 import { USER, SAVE_ASKS,
   REQUEST_ADD_SCORE,
   REQUEST_SHOW_NEXT,
   REQUEST_CORRECT_ANSWERS,
   REQUEST_TRUE_ANSWERS,
   RESET_GAME } from '../actions/index';
-// Esse reducer será responsável por tratar as informações do GAME
 
 const INITIAL_STATE = {
   score: 0,

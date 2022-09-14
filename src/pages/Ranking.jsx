@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../style/ranking.css';
+import { goLogin } from '../services/consts';
 
 class Ranking extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class Ranking extends Component {
 
   handleClick = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push(goLogin);
   };
 
   render() {
@@ -43,23 +44,15 @@ class Ranking extends Component {
           <div key={ player.hash } className="player">
             <img src={ `https://www.gravatar.com/avatar/${player.hash}` } alt="avatar" />
             <div className="infoPlayer">
-              <p
-                data-testid={ `player-name-${index}` }
-              >
+              <p data-testid={ `player-name-${index}` }>
                 { player.name }
               </p>
               <div>
                 <span>
-                  Acertos:
-                  {' '}
-                  { player.assertions }
+                  {`Acertos: ${player.assertions}`}
                 </span>
-                <span
-                  data-testid={ `player-score-${index}` }
-                >
-                  Pontuação:
-                  {' '}
-                  { player.score }
+                <span data-testid={ `player-score-${index}` }>
+                  {`Pontuação: ${player.score}`}
                 </span>
               </div>
             </div>
@@ -78,7 +71,7 @@ Ranking.propTypes = {
 }.isRequired;
 
 const mapStateToProps = (state) => ({
-  players: state.game.players,
+  players: state.ranking.players,
 });
 
 export default connect(mapStateToProps)(Ranking);

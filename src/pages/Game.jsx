@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Questions from '../components/Questions';
+import { goLogin } from '../services/consts';
 
 class Game extends Component {
   componentDidUpdate() {
@@ -13,7 +14,7 @@ class Game extends Component {
     };
     if (questions.response_code === objVerify.response_code) {
       localStorage.removeItem('token');
-      history.push('/');
+      history.push(goLogin);
     }
   }
 

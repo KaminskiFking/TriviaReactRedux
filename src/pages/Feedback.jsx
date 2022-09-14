@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import md5 from 'crypto-js/md5';
 import Header from '../components/Header';
 import { savePlayers } from '../redux/actions';
+import { goLogin, goRanking } from '../services/consts';
 
 class Feedback extends Component {
   componentDidMount() {
@@ -28,7 +29,7 @@ class Feedback extends Component {
 
   handleClick = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push(goLogin);
   };
 
   render() {
@@ -47,8 +48,14 @@ class Feedback extends Component {
         >
           Play Again
         </button>
-        <Link to="/ranking">
-          <button type="button" data-testid="btn-ranking">Ranking</button>
+        <Link to={ goRanking }>
+          <button
+            type="button"
+            data-testid="btn-ranking"
+          >
+            Ranking
+
+          </button>
         </Link>
       </div>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { goGame, goConfg } from '../services/consts';
 import { fetchTokenAPI, requestUser, resetGame } from '../redux/actions';
 import '../style/login.css';
 
@@ -28,7 +29,7 @@ class Login extends Component {
     const { dispatch, history } = this.props;
     dispatch(fetchTokenAPI());
     dispatch(requestUser(this.state));
-    history.push('/game');
+    history.push(goGame);
   };
 
   render() {
@@ -70,7 +71,7 @@ class Login extends Component {
             >
               Play
             </button>
-            <Link to="/config">
+            <Link to={ goConfg }>
               <button
                 type="button"
                 data-testid="btn-settings"
