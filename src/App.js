@@ -6,6 +6,7 @@ import Config from './pages/Config';
 import Ranking from './pages/Ranking';
 import Feedback from './pages/Feedback';
 import './App.css';
+import './style/global.css';
 
 export default function App() {
   return (
