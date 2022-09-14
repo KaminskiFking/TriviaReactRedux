@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import '../style/ranking.css';
 
 class Ranking extends Component {
   constructor() {
@@ -29,12 +30,19 @@ class Ranking extends Component {
   render() {
     const { players } = this.state;
     return (
-      <div>
+      <div className="ranking">
         <h1 data-testid="ranking-title">Ranking</h1>
+        <button
+          type="button"
+          data-testid="btn-go-home"
+          onClick={ this.handleClick }
+        >
+          Home
+        </button>
         { players.map((player, index) => (
-          <div key={ player.hash }>
+          <div key={ player.hash } className="player">
             <img src={ `https://www.gravatar.com/avatar/${player.hash}` } alt="avatar" />
-            <div>
+            <div className="infoPlayer">
               <p
                 data-testid={ `player-name-${index}` }
               >
@@ -57,13 +65,6 @@ class Ranking extends Component {
             </div>
           </div>
         ))}
-        <button
-          type="button"
-          data-testid="btn-go-home"
-          onClick={ this.handleClick }
-        >
-          Home
-        </button>
       </div>
     );
   }
