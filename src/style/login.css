@@ -1,0 +1,41 @@
+.formLogin {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  height: 266px;
+  left: 333px;
+  position: absolute;
+  top: 316px;
+}
+
+.formLogin form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 10px;
+  top: 50px;
+  width: 614px;
+}
+
+.formLogin form label input {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  height: 45px;
+  padding: 10px;
+  width: 519px;
+}
+
+.buttonsLogin {
+  column-gap: 19px;
+  display: flex;
+}
+
+.buttonsLogin button {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 45px;
+  width: 250px;
+}

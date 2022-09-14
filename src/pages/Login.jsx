@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchTokenAPI, requestUser, resetGame } from '../redux/actions';
+import '../style/login.css';
 
 class Login extends Component {
   constructor() {
@@ -33,14 +34,14 @@ class Login extends Component {
   render() {
     const { username, email } = this.state;
     return (
-      <div>
+      <div className="formLogin">
         <form>
           <label htmlFor="username">
-            Username
             <input
               type="text"
               name="username"
               id="username"
+              className="username"
               placeholder="Username"
               data-testid="input-player-name"
               onChange={ this.handleChange }
@@ -49,41 +50,35 @@ class Login extends Component {
           </label>
 
           <label htmlFor="email">
-            Email
             <input
               data-testid="input-gravatar-email"
               placeholder="Email"
               type="email"
               name="email"
               id="email"
+              className="email"
               onChange={ this.handleChange }
               value={ email }
             />
           </label>
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={ !username || !email }
-            onClick={ this.handClickApi }
-          >
-            Play
-          </button>
-          <Link to="/config">
+          <div className="buttonsLogin">
             <button
               type="button"
-              data-testid="btn-settings"
+              data-testid="btn-play"
+              disabled={ !username || !email }
+              onClick={ this.handClickApi }
             >
-              Settings
+              Play
             </button>
-          </Link>
-          <Link to="/ranking">
-            <button
-              type="button"
-              data-testid="btn-ranking"
-            >
-              Ranking
-            </button>
-          </Link>
+            <Link to="/config">
+              <button
+                type="button"
+                data-testid="btn-settings"
+              >
+                Settings
+              </button>
+            </Link>
+          </div>
         </form>
       </div>
     );
