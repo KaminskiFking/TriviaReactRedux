@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import md5 from 'crypto-js/md5';
 import Header from '../components/Header';
+import { savePlayers } from '../redux/actions';
 
 class Feedback extends Component {
+  componentDidMount() {
+    const { dispatch, assertions, email, name, score } = this.props;
+    const hash = md5(email).toString();
+    const player = { assertions, name, score, hash };
+    dispatch(savePlayers(player));
+  }
+
   resultFeedback = () => {
     const { answersMultiple, answersTrueOrFalse } = this.props;
-    console.log(answersMultiple, answersTrueOrFalse);
     const result = answersMultiple + answersTrueOrFalse;
     const beBetter = 3;
-    console.log(result);
     if (result === beBetter || result > beBetter) {
       return 'Well Done!';
     }
@@ -26,7 +33,6 @@ class Feedback extends Component {
 
   render() {
     const { score, assertions } = this.props;
-    console.log(assertions);
     const resultFeedback = this.resultFeedback();
     return (
       <div>
@@ -51,13 +57,16 @@ class Feedback extends Component {
 
 Feedback.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-  answersMultiple: PropTypes.number.isRequired,
-  answersTrueOrFalse: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired,
-  assertions: PropTypes.number.isRequired,
-};
+    push: PropTypes.func,
+  }),
+  answersMultiple: PropTypes.number,
+  answersTrueOrFalse: PropTypes.number,
+  score: PropTypes.number,
+  assertions: PropTypes.number,
+  email: PropTypes.string,
+  name: PropTypes.string,
+  dispatch: PropTypes.func,
+}.isRequired;
 
 const mapStateToProps = (state) => {
   console.log(state.player);
@@ -66,6 +75,8 @@ const mapStateToProps = (state) => {
     assertions: state.player.assertions,
     score: state.player.score,
     answersTrueOrFalse: state.player.trueAnswers,
+    name: state.player.name,
+    email: state.player.email,
   };
 };
 

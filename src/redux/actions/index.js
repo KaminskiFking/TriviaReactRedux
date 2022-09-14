@@ -7,6 +7,8 @@ export const REQUEST_ADD_SCORE = 'REQUEST_ADD_SCORE';
 export const REQUEST_SHOW_NEXT = 'REQUEST_SHOW_NEXT';
 export const REQUEST_CORRECT_ANSWERS = 'REQUEST_CORRECT_ANSWERS';
 export const REQUEST_TRUE_ANSWERS = 'REQUEST_TRUE_ANSWERS';
+export const SAVE_PLAYERS = 'SAVE_PLAYERS';
+export const RESET_GAME = 'RESET_GAME';
 
 export const requestUser = (user) => ({
   type: USER,
@@ -25,7 +27,6 @@ export const saveAsks = (asks) => ({
 
 export const fetchTokenAPI = () => (dispatch) => {
   getTokenApi().then((data) => {
-    console.log(data.token);
     localStorage.setItem('token', data.token);
     dispatch(tokenAction(data.token));
     getAsksApi(data.token)
@@ -53,4 +54,13 @@ export const correctAnswers = (value) => ({
 export const trueAnswers = (value) => ({
   type: REQUEST_TRUE_ANSWERS,
   value,
+});
+
+export const savePlayers = (payload) => ({
+  type: SAVE_PLAYERS,
+  payload,
+});
+
+export const resetGame = () => ({
+  type: RESET_GAME,
 });

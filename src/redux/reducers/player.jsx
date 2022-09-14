@@ -2,7 +2,9 @@
 import { USER, SAVE_ASKS,
   REQUEST_ADD_SCORE,
   REQUEST_SHOW_NEXT,
-  REQUEST_CORRECT_ANSWERS, REQUEST_TRUE_ANSWERS } from '../actions/index';
+  REQUEST_CORRECT_ANSWERS,
+  REQUEST_TRUE_ANSWERS,
+  RESET_GAME } from '../actions/index';
 // Esse reducer será responsável por tratar as informações do GAME
 
 const INITIAL_STATE = {
@@ -50,6 +52,14 @@ function gameReducer(state = INITIAL_STATE, action) {
       ...state,
       trueAnswers: Number(action.value),
       assertions: action.value + state.answers,
+    };
+  case RESET_GAME:
+    return {
+      ...state,
+      name: '',
+      assertions: 0,
+      score: 0,
+      gravatarEmail: '',
     };
   default:
     return state;
