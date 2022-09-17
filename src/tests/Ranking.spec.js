@@ -47,6 +47,5 @@ describe('Testing the Feedback.jsx page', () => {
     userEvent.click(PLAY_AGAIN_BTN);
     const { location: { pathname } } = history;
     expect(pathname).toEqual('/');
-
   });
 });
