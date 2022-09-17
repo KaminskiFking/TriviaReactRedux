@@ -75,16 +75,13 @@ Feedback.propTypes = {
   dispatch: PropTypes.func,
 }.isRequired;
 
-const mapStateToProps = (state) => {
-  console.log(state.player);
-  return {
-    answersMultiple: state.player.answers,
-    assertions: state.player.assertions,
-    score: state.player.score,
-    answersTrueOrFalse: state.player.trueAnswers,
-    name: state.player.name,
-    email: state.player.email,
-  };
-};
+const mapStateToProps = (state) => ({
+  answersMultiple: state.player.answers,
+  assertions: state.player.assertions,
+  score: state.player.score,
+  answersTrueOrFalse: state.player.trueAnswers,
+  name: state.player.name,
+  email: state.player.email,
+});
 
 export default connect(mapStateToProps)(Feedback);
