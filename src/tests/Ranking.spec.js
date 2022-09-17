@@ -26,7 +26,9 @@ describe('Testing the Ranking.jsx page', () => {
   });
   it('test if when click in Home, redirect the page to /', ()=>{
     const { history }= renderWithRouterAndRedux(<App />, INITIAL_STATE, '/feedback');
-    const BTN_RANKING = screen.getByTestId('btn-ranking');
-    userEvent.click(BTN_RANKING);
+    const BTN_HOME = screen.getByTestId('btn-go-home');
+    userEvent.click(BTN_HOME);
+    const { location: { pathname } } = history;
+    expect(pathname).toEqual('/');
   });
 });
