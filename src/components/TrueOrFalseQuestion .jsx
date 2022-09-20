@@ -29,7 +29,9 @@ class TrueOrFalseQuestion extends Component {
       question && (
         <fieldset>
           <div>
-            {`Tempo para responder:${timer}segundos`}
+            Tempo para responder:
+            <span data-testid="question-timer">{ timer }</span>
+            segundos
           </div>
           <div data-testid="question-category">{question.category}</div>
           <div>{question.difficulty}</div>
