@@ -10,7 +10,6 @@ class Game extends Component {
     const { history, questions } = this.props;
     const objVerify = {
       response_code: 3,
-      results: [],
     };
     if (questions.response_code === objVerify.response_code) {
       localStorage.removeItem('token');

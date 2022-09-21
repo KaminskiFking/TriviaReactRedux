@@ -27,7 +27,9 @@ class MultipleChoicesQuestion extends Component {
     const { answers } = this.state;
     return (
       <div>
-        {`Tempo para responder:${timer}segundos`}
+        Tempo para responder:
+        <span data-testid="question-timer">{ timer }</span>
+        segundos
         { question && (
           <div>
             <fieldset>
